@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-
+	""
 	"github.com/gorilla/mux"
 )
 
@@ -68,7 +68,10 @@ func getBook(w http.ResponseWriter, r *http.Request) {
 
 //Create a New Book
 func createBook(w http.ResponseWriter, r *http.Request) {
-
+	w.Header().Set("Content-Type", "application/json")
+	var book Book
+	_ = json.NewDecoder(r.body).Decode(&book)
+	book.ID
 }
 
 //Update a Book
